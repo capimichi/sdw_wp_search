@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Woocommerce Search
+ * Plugin Name: FastSearch
  * */
 
 define("FS_ROOT_FILE", __FILE__);
