@@ -1,0 +1,52 @@
+.ws-search-block {
+    position: absolute;
+    width: 350px;
+    height: 300px;
+    max-width: 100%;
+    max-height: 100%;
+    z-index: 999999999;
+    background-color: #fff;
+    border: 1px solid #464646;
+    overflow: hidden;
+    padding: 5px;
+    transition: 0.3s;
+}
+
+.ws-search-block ul {
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.ws-search-block ul li {
+    padding: 5px;
+}
+
+.ws-search-block ul li:hover {
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.ws-search-block ul li .ws-title {
+    font-size: 12px;
+    min-height: 35px;
+    line-height: 12px;
+}
+
+.ws-search-block ul li .ws-price {
+    font-weight: bold;
+}
+
+.ws-search-block img {
+    float: left;
+    width: 50px;
+    padding-right: 5px;
+}
+
+.ws-search-block b {
+    font-weight: bold;
+}
+
+.ws-search-block .loader {
+    max-width: 25px;
+}
