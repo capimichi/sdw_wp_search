@@ -1,6 +1,6 @@
 <?php
 
-namespace WoocommerceSearch\Endpoint;
+namespace FastSearch\Endpoint;
 
 /**
  * Created by PhpStorm.

@@ -14,21 +14,21 @@ add_action('admin_menu', function () {
 
         if ($secretKey) {
 
-            $publicKey = \WoocommerceSearch\Helper\WsRemoteHelper::getPublicKey($secretKey);
+            $publicKey = \FastSearch\Helper\WsRemoteHelper::getPublicKey($secretKey);
 
             if ($publicKey) {
-                update_option(\WoocommerceSearch\Helper\OptionsHelper::SECRET_KEY_METAKEY, $secretKey);
-                update_option(\WoocommerceSearch\Helper\OptionsHelper::PUBLIC_KEY_METAKEY, $publicKey);
+                update_option(\FastSearch\Helper\OptionsHelper::SECRET_KEY_METAKEY, $secretKey);
+                update_option(\FastSearch\Helper\OptionsHelper::PUBLIC_KEY_METAKEY, $publicKey);
             }
         }
 
-        $secretKey = get_option(\WoocommerceSearch\Helper\OptionsHelper::SECRET_KEY_METAKEY, "");
-        $publicKey = get_option(\WoocommerceSearch\Helper\OptionsHelper::PUBLIC_KEY_METAKEY, "");
+        $secretKey = get_option(\FastSearch\Helper\OptionsHelper::SECRET_KEY_METAKEY, "");
+        $publicKey = get_option(\FastSearch\Helper\OptionsHelper::PUBLIC_KEY_METAKEY, "");
 
         if ($secretKey) {
-            $remoteProductsCount = \WoocommerceSearch\Helper\WsRemoteHelper::getCountProducts($publicKey);
+            $remoteProductsCount = \FastSearch\Helper\WsRemoteHelper::getCountProducts($publicKey);
 
-//            $reindexProgress = get_option(\WoocommerceSearch\Helper\OptionsHelper::REINDEX_PROGRESS_METAKEY, 0);
+//            $reindexProgress = get_option(\FastSearch\Helper\OptionsHelper::REINDEX_PROGRESS_METAKEY, 0);
 
             $countQuery = new \WP_Query([
                 'post_type'      => 'product',

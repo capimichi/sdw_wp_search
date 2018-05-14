@@ -1,6 +1,6 @@
 <?php
 
-namespace WoocommerceSearch\Helper;
+namespace FastSearch\Helper;
 
 /**
  * Created by PhpStorm.

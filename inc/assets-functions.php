@@ -5,7 +5,7 @@ add_action('wp_footer', function () {
     echo fs_get_template('assets/scripts', [
         'loader_url'       => get_site_url() . "/wp-admin/images/wpspin_light.gif",
         'admin_url'        => admin_url('admin-ajax.php'),
-        'get_products_url' => \WoocommerceSearch\Endpoint\WsEndpoint::getListProductsNoQueryUrl(get_option(\WoocommerceSearch\Helper\OptionsHelper::PUBLIC_KEY_METAKEY)),
+        'get_products_url' => \FastSearch\Endpoint\WsEndpoint::getListProductsNoQueryUrl(get_option(\FastSearch\Helper\OptionsHelper::PUBLIC_KEY_METAKEY)),
     ]);
 
     wp_enqueue_style('ws-search-css', FS_ASSETS_URL . '/css/search.css');
@@ -18,7 +18,7 @@ add_action('admin_footer', function () {
     echo fs_get_template('assets/scripts', [
         'loader_url'       => get_site_url() . "/wp-admin/images/wpspin_light.gif",
         'admin_url'        => admin_url('admin-ajax.php'),
-        'get_products_url' => \WoocommerceSearch\Endpoint\WsEndpoint::getListProductsNoQueryUrl(get_option(\WoocommerceSearch\Helper\OptionsHelper::PUBLIC_KEY_METAKEY)),
+        'get_products_url' => \FastSearch\Endpoint\WsEndpoint::getListProductsNoQueryUrl(get_option(\FastSearch\Helper\OptionsHelper::PUBLIC_KEY_METAKEY)),
     ]);
 
     ?>

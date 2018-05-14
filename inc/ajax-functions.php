@@ -9,7 +9,7 @@ function fs_reindex_products()
     /*
     $perRequest = min(isset($_GET['per_request']) ? $_GET['per_request'] : 20, 100);
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
-    $key = get_option(\WoocommerceSearch\Helper\OptionsHelper::SECRET_KEY_METAKEY, '');
+    $key = get_option(\FastSearch\Helper\OptionsHelper::SECRET_KEY_METAKEY, '');
 
     $query = new \WP_Query([
         'post_type'      => 'product',
@@ -38,7 +38,7 @@ function fs_reindex_products()
 
     $json = json_encode($parsedProducts);
 
-    $url = \WoocommerceSearch\Endpoint\WsEndpoint::getAddProductsUrl();
+    $url = \FastSearch\Endpoint\WsEndpoint::getAddProductsUrl();
 
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_POSTFIELDS, [
@@ -78,7 +78,7 @@ function fs_reindex_product()
 
     try {
 
-        $syncProductsProgressKey = \WoocommerceSearch\Helper\OptionsHelper::SYNC_PRODUCTS_PROGRESS_METAKEY;
+        $syncProductsProgressKey = \FastSearch\Helper\OptionsHelper::SYNC_PRODUCTS_PROGRESS_METAKEY;
         $progress = isset($_GET['progress']) ? $_GET['progress'] : get_option($syncProductsProgressKey, 0);
 
         $query = new WP_Query([
@@ -101,10 +101,10 @@ function fs_reindex_product()
 
             $productImage = get_the_post_thumbnail_url($productId, 'thumbnail');
             $productUrl = get_the_permalink($productId);
-            $key = get_option(\WoocommerceSearch\Helper\OptionsHelper::SECRET_KEY_METAKEY, '');
+            $key = get_option(\FastSearch\Helper\OptionsHelper::SECRET_KEY_METAKEY, '');
             $product = new \WC_Product($productId);
 
-            $url = \WoocommerceSearch\Endpoint\WsEndpoint::getAddProductUrl();
+            $url = \FastSearch\Endpoint\WsEndpoint::getAddProductUrl();
 
             $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_POSTFIELDS, [
@@ -158,7 +158,7 @@ function fs_reindex_status_products()
         'status' => 'OK',
     ];
 
-    if (!empty(get_option(\WoocommerceSearch\Helper\OptionsHelper::SECRET_KEY_METAKEY))) {
+    if (!empty(get_option(\FastSearch\Helper\OptionsHelper::SECRET_KEY_METAKEY))) {
 
         try {
             $query = new WP_Query([
@@ -169,7 +169,7 @@ function fs_reindex_status_products()
                 'order'          => 'ASC',
             ]);
 
-            $syncProductsProgressKey = \WoocommerceSearch\Helper\OptionsHelper::SYNC_PRODUCTS_PROGRESS_METAKEY;
+            $syncProductsProgressKey = \FastSearch\Helper\OptionsHelper::SYNC_PRODUCTS_PROGRESS_METAKEY;
             $syncProductsProgress = get_option($syncProductsProgressKey, 0);
 
             $productsCount = intval($query->found_posts);
@@ -199,7 +199,7 @@ function fs_reindex_restart()
         'status' => 'OK',
     ];
 
-    update_option(\WoocommerceSearch\Helper\OptionsHelper::SYNC_PRODUCTS_PROGRESS_METAKEY, 0);
+    update_option(\FastSearch\Helper\OptionsHelper::SYNC_PRODUCTS_PROGRESS_METAKEY, 0);
 
     wp_send_json($responseData);
 
@@ -210,7 +210,7 @@ add_action('wp_ajax_fs_logout', 'fs_logout');
 
 function fs_logout()
 {
-    update_option(\WoocommerceSearch\Helper\OptionsHelper::SECRET_KEY_METAKEY, "");
-    update_option(\WoocommerceSearch\Helper\OptionsHelper::PUBLIC_KEY_METAKEY, "");
+    update_option(\FastSearch\Helper\OptionsHelper::SECRET_KEY_METAKEY, "");
+    update_option(\FastSearch\Helper\OptionsHelper::PUBLIC_KEY_METAKEY, "");
     die();
 }

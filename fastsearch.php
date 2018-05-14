@@ -29,7 +29,7 @@ add_action('init', function () {
 
             $perRequest = 200;
             $page = 1;
-            $key = get_option(\WoocommerceSearch\Helper\OptionsHelper::SECRET_KEY_METAKEY, '');
+            $key = get_option(\FastSearch\Helper\OptionsHelper::SECRET_KEY_METAKEY, '');
 
             do {
 
@@ -59,7 +59,7 @@ add_action('init', function () {
 
                 $json = json_encode($parsedProducts);
 
-                $url = \WoocommerceSearch\Endpoint\WsEndpoint::getAddProductsUrl();
+                $url = \FastSearch\Endpoint\WsEndpoint::getAddProductsUrl();
 
                 $ch = curl_init($url);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, [
