@@ -1,7 +1,7 @@
 <?php
 
 add_action('admin_menu', function () {
-    add_menu_page("WooCommerce Search", "Woocommerce Search", "manage_options", FS_INDEX_PAGE_SLUG, function () {
+    add_menu_page("FastSearch", "FastSearch", "manage_options", FS_INDEX_PAGE_SLUG, function () {
 
         $template = "page/index";
         $templateArgs = [
